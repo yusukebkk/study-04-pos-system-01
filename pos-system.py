@@ -1,3 +1,4 @@
+# coding:utf-8
 ### 商品クラス
 class Item:
     def __init__(self,item_code,item_name,price):
