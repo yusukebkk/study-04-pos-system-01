@@ -35,9 +35,17 @@ def main():
     
     # オーダー登録
     order=Order(item_master)
-    order.add_item_order("001")
-    order.add_item_order("002")
-    order.add_item_order("003")
+    while True:
+        input_text = input("オーダー番号を一つずつ入れてEnterを押してください。最後のアイテムを入れたら「end」と入力してください>>\n")
+        if input_text == "end":
+            break
+        else:
+            order.add_item_order(input_text)
+        
+
+    #order.add_item_order("001")
+    #order.add_item_order("002")
+    #order.add_item_order("003")
     
     # オーダー表示
     order.view_item_list()
