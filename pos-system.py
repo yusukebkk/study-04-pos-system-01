@@ -1,4 +1,6 @@
 # coding:utf-8
+import pandas as pd
+
 ### 商品クラス
 class Item:
     def __init__(self,item_code,item_name,price):
@@ -23,15 +25,16 @@ class Order:
             for item in self.item_master:
                 if item.item_code == order_item:
                     print(f"商品コード:{item.item_code}\t商品名:{item.item_name}\t金額：{item.price}")
-    
+
     
 ### メイン処理
 def main():
     # マスタ登録
     item_master=[]
-    item_master.append(Item("001","りんご",100))
-    item_master.append(Item("002","なし",120))
-    item_master.append(Item("003","みかん",150))
+    df = pd.read_csv('item_master.csv')
+    for row in df.itertuples():
+        item_master.append(Item(f"{int(row[1]):03}",row[2],row[3]))
+
     
     # オーダー登録
     order=Order(item_master)
